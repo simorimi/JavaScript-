@@ -1,0 +1,34 @@
+#문제 해결법
+
+### What is an algorithm?
+: A process or set of steps to accomplish a certain task. / It's the foundation for being a successful problem solving and developer.
+
+### How do I improve
+1. Devise a plan for solving problems
+2. Master common problem solving patterns
+
+#Problem
+1. Understand the Problem
+- Can I restate the problem in my own words?
+- What are the inputs that go into the problem?
+- What are the outputs that should come from ther solution to the problem?
+- Can ther outputs be determined from the inputs? In other words, do I have enough information to solve the problem?(You may not be able to answer this question until you set about solving the problem. That's okay; it's still worth considering the question at this early stage.) 
+- How should I label the important pieces of data that are a part of the problem?
+
+2. Explore Concrete Examples
+- Start with Simple Examples
+- Progress to More Complex Examples
+- Explore Examples with Empty Inputs
+- Explore Examples with Invalid Inputs
+
+3. Break It down
+- Explicitly write out the steps you need to take
+
+4. Solve/ Simplify
+- Find the core difficulty in what you're trying to do 
+- Temporarily ignore that difficulty
+- Write a simplified solution
+- Then incorporate that difficulty back in
+
+5. Look Back and Refactor
+
