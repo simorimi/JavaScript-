@@ -1,0 +1,51 @@
+# 빅오 표기법(Big O Notation) - O()
+- 여러가지 코드를 일반적으로 서로 비교하고 성능을 평가하는 방법
+- 숫자를 세는 것에 붙인 공식적인 표현 / 전반적인 추세에 관한 설명 (doesn't care about precision, only about general trends)
+- 입력된 내용이 늘어날 수록 알고리즘에 실행시간이 어떻게 변하는지 설명하는 공식적인 방식 (to analyze the performance of an algorithm)
+- O(1) / O(n) / O(n^2)... -> 제곱의 경우 중첩되는 경우에 해당. 이래서 indent가 2를 초과하지 않도록 권유하나봄
+
+faster / less momory-intensive / more readable
+
+# For example
+1~n까지의 합
+1) O(n)
+loop(n) {
+    let result = 0;
+    for (let i = 0; i <= n; i++ ){
+        result += i;
+    }
+    return result;
+}
+
+2) O(1)
+loopFn(n) {
+    return (n * (n + 1)) / 2;
+  }
+
+시간을 재는 것보다는 연산의 갯수를 세는 것이 유용(+, -, *, /, 비교연산, 논리연산)
+
+# Big O 시간 복잡도
+: How can we analyze the runtime of an algorithm as the size of the inputs increases
+1. Arithmatic operations are constant(+, -, *, /)
+2. Variable assignment is constant
+3. Accessing elements in an array(by index) or object(by key) is constant
+4. In a loop, the complexity is the length of the loop times the complexity of whatever happens inside of the loop
+
+# Big O 공간 복잡도 = 보조 공간 복잡도
+: How much additional memory do we need to allocate in order to run the code in our algorithm
+
+auxiliary space complexity
+: space required by the algorithm, not including space taken up by the inputs. (알고리즘 자체가 필요로 하는 공간)
+1. Most primitives(booleans, numbers undefined, null) are constant space
+2. Strings require O(n) space(where n is the string length)
+3. Reference types are generally O(n), where n is the length(for arrays) or the number of keys(for objects)
+
+Logarithms
+: 지수함수의 역함수 / 해당 과정에서 밑이 로그의 단순화 표현은 밑이 2인 경우로 생각한다.(2이든 3이든 경향성을 보는 것이기때문에 상관이 없다.)
+-> (ex)log(8) = 3
+
+Logarithms Complexity
+:O(log n) / O(nlog n) -> 여기서 알아야할 것은 O(log n)이 O(n) 보다 효율적이다 정도를 안다.
+1. Certain searching algorithms have Logarithmic time complexity
+2. Efficient sorting algorithms involve logarithms
+3. Recursion(재귀) sometimes involves Logarithmic space complexity
