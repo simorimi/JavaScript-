@@ -1,0 +1,21 @@
+When to use objects?
+- don't need order
+- need fast access, insertion and removal
+
+# Object
+insertion - O(1) / removal - O(1) / access - O(1) 
+searching - O(n) -> searching이 key를 찾는 것이 아님. 어떤 특정한 정보가 어떤 값에 있는지 확인하는 것
+
+# Method
+Object.keys - O(n)
+Object.values - O(n)
+Object.entries - O(n)
+hasOwnProperty - O(1)
+
+When to use arrays?
+- need order
+- need fast access, insertion and removal(sort of)
+
+# Array
+insertion - it depends / removal - it depends 끝에다가 추가 or 제거한다면 O(1) 그러나 배열 사이에 추가한다면 O(n)
+searching - O(n) / access - O(1) -> 여기서 access란 몇번째에 접근할 것인가에 대한 의미 예를 들어 10000개 배열이 있고 9000번째 접근한다면 바로 9000번째 접근함
