@@ -1,0 +1,56 @@
+### 문제 해결 패턴
+
+# Frequency Counter(빈도수 세기 패턴)
+- This pattern uses objects or sets to collect values/frequencies of values 
+- This can often avoid the need for nested loops(중첩된 반복문) or O(n^2) operations with arrays/strings
+- 보통 객체를 사용하는 방법, 객체를 사용하여 프로파일을 구성하는 것은 배열이나 문자열의 내용을 분석하는 방법으로 보통 배열이나 문자열과 같은 선형 구조를 구성하는 것
+- 그러면 해당 분석을 문자열이나 배열에서 생성된 다른 객체의 형태와 신속하게 비교할 수 있음
+
+(ex) 두 배열을 입력했을 때 한 배열이 다른 배열 값들의 제곱의 배열인지인하기
+1. function same(arr1, arr2) {
+    if(arr1.length !== arr2.length){
+        return false;
+    }
+    for(let i = 0; i < arr1.length ; i++){
+        let correctIndex = arr2.indexOf(arr1[i] ** 2)
+        if(correctIndex === -1){
+            return false;
+        }
+        arr2.splice(correctIndex, 1);
+    }
+    return true; 
+    }
+ㄴ for 안에 indexOf 존재하여 중첩 반복문임 O(n^2) 
+ㄴ indexOf의 기능은 전체 배열을 반복하거나 중첩된 루프인 전체 배열을 잠재적으로 반복하는 것
+
+2. function same(arr1, arr2) {
+    if(arr1.length !== arr2.length){
+        return false;
+    }
+    let frequencyCounter1 = {};
+    let frequencyCounter2 = {};
+    for(let val of arr1) {
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1
+    }
+    for(let val of arr2) {
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1
+    }
+    for(let key in frequencyCounter1){
+        if(!(key ** 2 in frequencyCounter2)){
+            return false;
+        }
+        if(frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+            return false;
+        }
+    }
+    return true; 
+    }
+    ㄴ 두 개의 루프가 두 개의 중첩된 개별 루프보다 훨씬 낫다 
+    ㄴ 2번의 경우 O(n)
+
+# OR ||
+:OR 연산자의 경우 양 값이 모두 true이면 첫번째 true 값을 return 하고 두 값중 하나만 true이면 true에 해당하는 값을 return한다. 
+(ex)
+"Cat" || "Dog"; // t || t returns "Cat"
+false || "Cat"; // f || t returns "Cat"
+"Cat" || false; // t || f returns "Cat"
