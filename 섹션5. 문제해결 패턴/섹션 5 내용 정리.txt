@@ -1,13 +1,14 @@
 ### 문제 해결 패턴
 
-# Frequency Counter(빈도수 세기 패턴)
+## Frequency Counter(빈도수 세기 패턴)
 - This pattern uses objects or sets to collect values/frequencies of values 
 - This can often avoid the need for nested loops(중첩된 반복문) or O(n^2) operations with arrays/strings
 - 보통 객체를 사용하는 방법, 객체를 사용하여 프로파일을 구성하는 것은 배열이나 문자열의 내용을 분석하는 방법으로 보통 배열이나 문자열과 같은 선형 구조를 구성하는 것
 - 그러면 해당 분석을 문자열이나 배열에서 생성된 다른 객체의 형태와 신속하게 비교할 수 있음
 
 (ex) 두 배열을 입력했을 때 한 배열이 다른 배열 값들의 제곱의 배열인지인하기
-1. function same(arr1, arr2) {
+1. O(n^2)
+function same(arr1, arr2) {
     if(arr1.length !== arr2.length){
         return false;
     }
@@ -20,10 +21,11 @@
     }
     return true; 
     }
-ㄴ for 안에 indexOf 존재하여 중첩 반복문임 O(n^2) 
+ㄴ for 안에 indexOf 존재하여 중첩 반복문임
 ㄴ indexOf의 기능은 전체 배열을 반복하거나 중첩된 루프인 전체 배열을 잠재적으로 반복하는 것
 
-2. function same(arr1, arr2) {
+2. Refactor(O(n))
+function same(arr1, arr2) {
     if(arr1.length !== arr2.length){
         return false;
     }
@@ -46,7 +48,6 @@
     return true; 
     }
     ㄴ 두 개의 루프가 두 개의 중첩된 개별 루프보다 훨씬 낫다 
-    ㄴ 2번의 경우 O(n)
 
 # OR ||
 :OR 연산자의 경우 양 값이 모두 true이면 첫번째 true 값을 return 하고 두 값중 하나만 true이면 true에 해당하는 값을 return한다. 
@@ -54,3 +55,34 @@
 "Cat" || "Dog"; // t || t returns "Cat"
 false || "Cat"; // f || t returns "Cat"
 "Cat" || false; // t || f returns "Cat"
+
+## Multiple Pointers(다중 포인터 패턴)
+- Creating pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition
+- Very efficient for solving problems with minimal space complexity as well
+(ex) sumZero 
+1. O(n^2)
+function sumZero(arr) {
+    for(let i = 0; i < arr.length; i++){
+        for(let j = i+1; j < arr.length; j++){
+            if(arr[i] + arr[j] === 0){
+                return [arr[i], arr[j]]
+            }
+        }
+    }
+}
+
+2. Refactor(TimeComplexity = O(n), SpaceComplexity = O(1))
+function sumZero(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    while(left < right) {
+        let sum = arr[left] + arr[right];
+        if(sum === 0) {
+            return [arr[left], arr[right]];
+        } else if(sum > 0) {
+            right--;
+        } else {
+            left++;
+        }
+    }
+}
